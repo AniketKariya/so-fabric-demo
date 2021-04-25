@@ -3,6 +3,7 @@ const path = require("path");
 const fs = require("fs");
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname + "/build")));
 app.use(express.urlencoded({ extended: true }));
@@ -32,6 +33,6 @@ app.get("/get-images", (req, res) => {
     res.json(JSON.parse(fs.readFileSync("./images.json")))
 })
 
-app.listen(4000, () => {
-    console.log("up and running on port 4000");
+app.listen(PORT, () => {
+    console.log(`up and running on port ${PORT}`);
 })
